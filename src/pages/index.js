@@ -1,8 +1,9 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import {initializeApollo} from "../lib/apolloClient";
-import GET_ROLES_QUERY from "./../lib/graphql/getRoles.graphql";
+import GET_EPISODES from "./../lib/graphql/getEpisodes.graphql";
 import {useQuery} from "@apollo/client";
+import Typography from "@material-ui/core/Typography";
 
 
 
@@ -10,7 +11,7 @@ async function getStaticProps() {
   const apolloClient = initializeApollo();
 
   await apolloClient.query({
-    query: GET_ROLES_QUERY,
+    query: GET_EPISODES,
   });
 
   return {
@@ -24,8 +25,8 @@ async function getStaticProps() {
 
 function Home() {
 
-  const {loading: loadingRoles, error: errorRoles, data: roles} = useQuery(GET_ROLES_QUERY);
-  console.log(roles);
+  const {loading: loadingEpisodes, error: errorEpisodes, data: episodes} = useQuery(GET_EPISODES);
+  console.log(episodes);
 
   return (
     <div className={styles.container}>
@@ -35,9 +36,10 @@ function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
+
+        <Typography variant={"h1"} className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+        </Typography>
 
         <p className={styles.description}>
           Get started by editing{' '}
