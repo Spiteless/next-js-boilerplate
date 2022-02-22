@@ -1,99 +1,99 @@
-import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
+import { createTheme, responsiveFontSizes } from '@mui/material/styles';
+
 
 //fonts
-import gtAmericaRegularOtf from "../../public/fonts/GT-America-Regular.otf";
-import gtAmericaBoldOtf from "../../public/fonts/GT-America-Bold.otf";
-import gtAmericaLightOtf from "../../public/fonts/GT-America-Light.otf";
-import gtAmericaMediumOtf from "../../public/fonts/GT-America-Medium.otf";
-import plainRegularOtf from "../../public/fonts/Plain-Regular.otf";
-
-const gtAmericaRegular = {
-  fontFamily: "GT America",
-  fontStyle: "normal",
-  fontDisplay: 'swap',
-  fontWeight: 400,
-  src: `
-    local('GT America Regular'),
-    url(${gtAmericaRegularOtf}) format('opentype')
-  `,
-  unicodeRange: 'U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF'
-};
-
-const gtAmericaBold = {
-  fontFamily: "GT America",
-  fontStyle: "normal",
-  fontWeight: 700,
-  fontDisplay: 'swap',
-  src: `
-    local('GT America Bold'),
-    local('GTAmerica-Bold'),
-    url(${gtAmericaBoldOtf}) format('opentype')
-  `,
-  unicodeRange: 'U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF'
-
-};
-
-const gtAmericaMedium = {
-  fontFamily: "GT America",
-  fontStyle: "normal",
-  fontWeight: 500,
-  fontDisplay: 'swap',
-  src: `
-    local('GT America Medium'),
-    local('GTAmerica-Medium'),
-    url(${gtAmericaMediumOtf}) format('opentype')
-  `,
-  unicodeRange: 'U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF'
-
-};
-
-const gtAmericaLight = {
-  fontFamily: "GT America",
-  fontStyle: "normal",
-  fontWeight: 300,
-  fontDisplay: 'swap',
-  src: `
-    local('GT America Light'),
-    local('GTAmerica-Light'),
-    url(${gtAmericaLightOtf}) format('opentype')
-  `,
-  unicodeRange: 'U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF'
-
-};
-
-const plainRegular = {
-  fontFamily: "Plain",
-  fontStyle: "normal",
-  fontWeight: 400,
-  fontDisplay: 'swap',
-  src: `
-    local('Plain'),
-    url(${plainRegularOtf}) format('opentype')
-  `,
-  unicodeRange: 'U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF'
-
-};
+import gilroyBoldOtf from "../../public/fonts/Gilroy-Bold.otf";
+import gilroySemiBoldOtf from "../../public/fonts/Gilroy-SemiBold.otf";
+import gilroyRegularOtf from "../../public/fonts/Gilroy-Regular.otf";
+import gilroyMediumOtf from "../../public/fonts/Gilroy-Medium.otf";
 
 // Create a theme instance.
-const theme = createMuiTheme({
+const theme = createTheme({
   palette: {
     primary: {
-      main: "#3849E7"
+      main: "#3A406B",
+      light: "#6A76AC"
+    },
+    secondary: {
+      main: '#D5CDF9',
+      pop: '#EB71FF'
+    },
+    error: {
+      main: '#E34357'
+    },
+    success: {
+      main: '#48D987'
+    },
+    other: {
+      pop: "#EB71FF",
+      grey1: "#868EAE",
+      grey2: "#ADB3CC",
+      grey3: "#DBDEEC",
+      grey4: "#F6F6FA",
+      blueAlt: "#6A76AC"
+    },
+    white: {
+      main: "#FFFFFF"
     }
   },
   typography: {
     fontFamily: [
-      'GT America',
-      'Plain'
+      'Gilroy',
     ].join(',')
   },
-  overrides: {
-    MuiCssBaseline: {
-      '@global': {
-        '@font-face': [gtAmericaRegular,gtAmericaMedium,gtAmericaBold,gtAmericaLight,plainRegular],
-      },
+  components: {
+    MuiAvatar: {
+      styleOverrides: {
+        img: {
+          objectFit: "contain"
+        }
+      }
     },
-  },
+    MuiCssBaseline: {
+      styleOverrides: `
+
+        *, *::before, *::after {
+             box-sizing: border-box;
+        }
+
+        @font-face  {
+          font-family: "Gilroy";
+          font-style: "normal";
+          font-display: 'swap';
+          font-weight: 400;
+          src: local('Gilroy-Regular'), url(${gilroyRegularOtf}) format('opentype');
+          unicodeRange: 'U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF';
+        }
+        @font-face  {
+          font-family: "Gilroy";
+          font-style: "normal";
+          font-display: 'swap';
+          font-weight: 500;
+          src: local('Gilroy-Medium'), url(${gilroyMediumOtf}) format('opentype');
+          unicodeRange: 'U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF';
+        }
+
+        @font-face  {
+          font-family: "Gilroy";
+          font-style: "normal";
+          font-display: 'swap';
+          font-weight: 700;
+          src: local('Gilroy-Bold'), url(${gilroyBoldOtf}) format('opentype');
+          unicodeRange: 'U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF';
+        }
+
+         @font-face  {
+          font-family: "Gilroy";
+          font-style: "normal";
+          font-display: 'swap';
+          font-weight: 600;
+          src: local('Gilroy-SemiBold'), url(${gilroySemiBoldOtf}) format('opentype');
+          unicodeRange: 'U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF';
+        }
+
+      `
+    }
+  }
 });
 
 export default responsiveFontSizes(theme);

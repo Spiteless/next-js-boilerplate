@@ -1,0 +1,10 @@
+.circleci
+.idea
+docs
+node_modules
+scripts
+logs
+keys
+package-lock.json
+yarn.lock
+scripts/.ignored

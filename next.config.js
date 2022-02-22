@@ -1,10 +1,23 @@
 const { PHASE_DEVELOPMENT_SERVER } = require('next/constants');
+const withImages = require('next-images');
+const path = require("path");
+
+const withTM = require('next-transpile-modules')([
+  '@mui/material',
+  '@mui/system',
+  '@mui/icons-material', // If @mui/icons-material is being used
+]);
 
 
 module.exports = (phase, { defaultConfig }) => {
-  if (phase === PHASE_DEVELOPMENT_SERVER) {
-    return {
+    return withTM(withImages({
+        esModule: true,
         webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+            config.resolve.alias = {
+                ...config.resolve.alias,
+                '@mui/styled-engine': '@mui/styled-engine-sc',
+                "react": path.resolve('./node_modules/react')
+            };
             config.module.rules.push(
                 {
                   test: /\.(graphql|gql)$/,
@@ -23,15 +36,8 @@ module.exports = (phase, { defaultConfig }) => {
                       }
                     ]
                 }
-            );
+            )
             return config;
         }
-    }
-  }
-
-  return {
-        webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
-            return config;
-        }
-  }
+    }));
 };

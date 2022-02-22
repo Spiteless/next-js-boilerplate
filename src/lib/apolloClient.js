@@ -7,9 +7,10 @@ function createApolloClient() {
     return new ApolloClient({
      ssrMode: typeof window === "undefined", // set to true for SSR
      link: new HttpLink({
-       uri: process.env.NEXT_PUBLIC_GRAPHQL_SERVER,
+       uri: `${process.env.NEXT_PUBLIC_API_URL}/graphql`,
+       // credentials: "include"
      }),
-     cache: new InMemoryCache(),
+     cache: new InMemoryCache()
     });
 }
 
